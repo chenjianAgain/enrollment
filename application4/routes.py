@@ -42,7 +42,7 @@ def api(idx=None):
     else:
         jData = courseData[int(idx)]
         
-    return Response(json.dump(jData), mimetype="application/json")
+    return Response(json.dumps(jData), mimetype="application/json")
     
 class User(db.Document):
     user_id     =   db.IntField( unique=True )
@@ -56,6 +56,6 @@ def user():
     #  User(user_id=3, first_name="Christian", last_name="Hur", email="christian@uta.com", password="abc1234").save()
     #  User(user_id=4, first_name="Mary", last_name="Jane", email="mary.jane@uta.com", password="password123").save()
      users = User.objects.all()
-     print('users: ', json.dump(users))
-     return Response(json.dump(users), mimetype="application/json")
-    #  return render_template("user.html", users=users)
+     print('users: ', json.dumps(users))
+    #  return Response(json.dumps(users), mimetype="application/json")
+     return render_template("user.html", users=users)
